@@ -1,0 +1,41 @@
+doctype awsm
+spreadsheet
+  head
+    title Example Awsm Spreadsheet
+    // includes all json_formulas in all tables
+    include json_formula
+    //- examples of including subsets of a formula packeage
+    //- include json_formula/small
+    //- include json_formula/medium
+    //- include json_formula/large
+    link foreign_table
+  formula#custom_formula
+    // tbd
+  table
+    head
+      include custom_formula
+      entries
+        singular: person
+        plural: people
+      properties
+        id: integer, {unique, autoincrement, start=100}
+        name: string
+        sex: ['male','female']
+        age: integer, {optional}
+        height: integer
+        weight: float, {optional}
+        crude optimal weight: =height/2.5
+        optimal weight: =optimalWeight({sex, height_cm: height, weight_kg: weight, age})
+    entries
+      entry
+        Alice
+        female
+        175
+      entry
+        Bob
+        male
+        age: 30
+        188
+        weight: 75
+  chart
+    // tbd
